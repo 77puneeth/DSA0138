@@ -1,0 +1,110 @@
+1.create a class to print an integer and a character using two-functions having the same name but different sequence of the integer and the character Parameters.
+for example, if the parameters of the first function are of the form (int n. char, c). Then that of the second function will be of the-form (char c. int n).
+
+answer:
+
+#include <iostream>
+class Printer {
+public:
+    void print(int n, char c) {
+        std::cout << "Integer: " << n << ", Character: " << c << std::endl;
+    }
+    void print(char c, int n) {
+        std::cout << "Character: " << c << ", Integer: " << n << std::endl;
+    }
+};
+int main() {
+    Printer printer;
+    printer.print(5, 'A');
+    printer.print('B', 10);
+    return 0;
+}
+
+2.write a function that returns true it given array is empty and false otherwise. examples is Empty({})→rue is Empty({1,2,3})→false.
+
+answer:
+
+#include <iostream>
+#include <vector>
+bool isEmpty(const std::vector<int>& arr) {
+    return arr.empty();
+}
+int main() {
+    std::vector<int> emptyArr = {};
+    std::vector<int> nonEmptyArr = {1, 2, 3};
+    std::cout << "isEmpty({}) → " << std::boolalpha << isEmpty(emptyArr) << std::endl;
+    std::cout << "isEmpty({1, 2, 3}) → " << std::boolalpha << isEmpty(nonEmptyArr) << std::endl;
+    return 0;
+}
+
+3.Create a class named Rectangle with two data members length and breadth and a function to calculate are which is 'length breadth" The class has tree constructors
+which are:
+1- no parameter values of both length and breadth are assigned zero.
+2- two parameters two volves are assigned as length and breadth respectively
+3. one parameters - both legend and breadth wit create objects of same valve. 
+create objects of 'Rectangle Class having none, and two parameters and print its area.
+Input 3,5,0
+output Area 0,9,9
+
+answer:
+
+#include <iostream>
+class Rectangle {
+private:
+    int length;
+    int breadth;
+public:
+    Rectangle() : length(0), breadth(0) {}
+    Rectangle(int l, int b) : length(l), breadth(b) {}
+    Rectangle(int x) : length(x), breadth(x) {}
+    int calculateArea() {
+        return length * breadth;
+    }
+};
+int main() {
+    Rectangle rect1; // No parameters, default values (0, 0)
+    Rectangle rect2(3, 5); // Two parameters (3, 5)
+    Rectangle rect3(9); // One parameter, both length and breadth set to 9
+    std::cout << "Area of Rectangle 1: " << rect1.calculateArea() << std::endl;
+    std::cout << "Area of Rectangle 2: " << rect2.calculateArea() << std::endl;
+    std::cout << "Area of Rectangle 3: " << rect3.calculateArea() << std::endl;
+    return 0;
+}
+
+4.Create which a class student' with three data members are name, age and address. 
+The Constructor of the class assigns default values of name as "unknown. age as D' and address as "not available" 
+it has two functions with the same name set Info first function has two parameters 
+JORNAME and age and assigns the same whereas the second function takes has three parameters which are assigned to name, age and address respectively.
+print the name age and address of le students Hint- use array of objects.
+
+answer:
+
+#include <iostream>
+#include <string>
+class Student {
+public:
+    std::string name;
+    int age;
+    std::string address;
+    Student() : name("unknown"), age(0), address("not available") {}
+    void setInfo(std::string newName, int newAge) {
+        name = newName;
+        age = newAge;
+    }
+    void setInfo(std::string newName, int newAge, std::string newAddress) {
+        name = newName;
+        age = newAge;
+        address = newAddress;
+    }
+};
+int main() {
+    const int numStudents = 3;
+    Student students[numStudents];
+    students[0].setInfo("Alice", 20, "123 Main St");
+    students[1].setInfo("Bob", 22, "456 Elm St");
+    students[2].setInfo("Charlie", 21, "789 Oak St");
+    for (int i = 0; i < numStudents; ++i) {
+        std::cout << "Student " << i + 1 << " - Name: " << students[i].name << ", Age: " << students[i].age << ", Address: " << students[i].address << std::endl;
+    }
+    return 0;
+}
