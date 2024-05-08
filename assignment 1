@@ -1,0 +1,135 @@
+1.A boy has his money deposited Rs 10000. RS 15000, and 2520000 in banks - Bank A, Bank B, Bank c, respectively. 
+we have to print the money deposited by him in a particular bank.create a class Bank with a function 'get Balance which return so. 
+make its three subclasses name "Bank A', 'Bank B' and 'Bank c' with a function wit the same name get Balance'
+which returns the amount deposited in that particular bank Call the function' get Balance' by the object of each of the three banks
+
+answer:
+
+#include <iostream>
+class Bank {
+public:
+    virtual int getBalance() {
+        return 0;
+    }
+};
+class BankA : public Bank {
+public:
+    int getBalance() override {
+        return 10000;
+    }
+};
+class BankB : public Bank {
+public:
+    int getBalance() override {
+        return 15000;
+    }
+};
+class BankC : public Bank {
+public:
+    int getBalance() override {
+        return 2520000;
+    }
+};
+int main() {
+    BankA bankA;
+    BankB bankB;
+    BankC bankC;
+    std::cout << "Amount deposited in Bank A: Rs " << bankA.getBalance() << std::endl;
+    std::cout << "Amount deposited in Bank B: Rs " << bankB.getBalance() << std::endl;
+    std::cout << "Amount deposited in Bank C: Rs " << bankC.getBalance() << std::endl;
+    return 0;
+}
+2.write a program to count the number of Vowels and  consonants in a string. 
+Input: string 
+out put. number of vowels: 1
+Number of constant: 5 
+Test cases 
+1: HYPOTHECATION 2.MATRICULATION
+3. MANIPULATION 4. SEDIMENTATION 5. EXPERIMENTATION
+
+answer:
+
+#include <iostream>
+#include <string>
+#include <cctype>
+
+using namespace std;
+int main() {
+    string input;
+    cout << "Enter a string: ";
+    getline(cin, input);
+    int vowels = 0, consonants = 0;
+    for (char c : input) {
+        if (isalpha(c)) {
+            char lowerC = tolower(c);
+            if (lowerC == 'a' || lowerC == 'e' || lowerC == 'i' || lowerC == 'o' || lowerC == 'u') {
+                vowels++;
+            } else {
+                consonants++;
+            }
+        }
+    }
+    cout << "Number of vowels: " << vowels << endl;
+    cout << "Number of consonants: " << consonants << endl;
+    return 0;
+}
+3.white program to print the names of students by creating a student class. 
+if no name is Passed while creating an object of student class,
+then the name should be unknown otherwise the name should be equal to the string value passed while creating object of student class ( use  constructors)
+
+answer:
+
+#include <iostream>
+#include <string>
+class Student {
+public:
+    Student() : name("Unknown") {}
+    Student(const std::string& studentName) : name(studentName) {}
+    void printName() {
+        std::cout << "Student Name: " << name << std::endl;
+    }
+private:
+    std::string name;
+};
+int main() {
+    Student student1;
+    Student student2("Alice");
+    student1.printName();
+    student2.printName();
+    return 0;
+}
+4.write a  program to find whether the Person is eligible for vote or not. and it that particular person is not eligible, then point How many years are left to be eligible.
+
+Input
+
+enter your age : 7
+
+Output:
+
+you are allowed to vote after 11 years
+
+Testcases:-12
+
+34
+
+9
+
+answer:
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int age;
+    
+    cout << "Enter your age: ";
+    cin >> age;
+    
+    if (age >= 18) {
+        cout << "You are allowed to vote." << endl;
+    } else {
+        cout << "You are allowed to vote after " << 18 - age << " years." << endl;
+    }
+    
+    return 0;
+}
