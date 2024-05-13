@@ -1,0 +1,128 @@
+1.Write a program to read in two integers and use the conditional operator to determine which number is greater.
+answer:
+#include <iostream>
+
+int main() {
+    int num1, num2;
+
+    std::cout << "Enter the first number: ";
+    std::cin >> num1;
+
+    std::cout << "Enter the second number: ";
+    std::cin >> num2;
+
+    int greaterNumber = (num1 > num2) ? num1 : num2;
+
+    std::cout << "The greater number is: " << greaterNumber << std::endl;
+
+    return 0;
+}
+2.Write the code to implement the concept of inheritance for Vehicles. You are 
+required to implement inheritance between classes. You have to write four 
+classes in C++ i.e. one superclass, two sub classes and one driver class. 
+Vehicle is the super class whereas Bus and Truck are sub classes of Vehicle 
+class. Transport is a driver class which contains main method.
+
+Detailed description:
+Detailed description of Vehicle (Super class):
+
+The class Vehicle must have following attributes:
+1.Vehicle model
+2.Registration number
+3.Vehicle speed (km/hour) 
+4.Fuel capacity (liters) 
+5.Fuel consumption (kiloM) 
+
+The Vehicle class must have following methods:
+1.Parameterized constructor that will initialize all the datamembers with the given values.
+ 
+2.Getters and Setters for each data member that will get and setthe values of data members of class. 
+
+3.A method fuelNeeded() that will takedistance (in kilo meter) as an 
+argument.It will calculate the amount of fuel needed for the given distance and 
+will return the value of fuel needed for given distance. You can use the 
+attributes ‘Fuel consumption’defined within above Vehicle class to determine 
+the fuel needed forthe given distance. You are required to implement this 
+functionality by yourself.
+
+4.A method distanceCovered() that willtake time (in hours) as an argument. It 
+will calculate the distance for the given time and speed and returns the value 
+of distance. The formula to calculate speed is given as speed = distance/time. 
+You can use this formula to calculate the distance.
+
+5.A display() method that will display all the information of a vehicle.
+
+Derive 2 classes Bus and Truck from Vehicle clas
+answer:
+#include <iostream>
+#include <string>
+
+class Vehicle {
+protected:
+    std::string model;
+    std::string regNumber;
+    double speed;
+    double fuelCapacity;
+    double fuelConsumption;
+
+public:
+    Vehicle(std::string mdl, std::string reg, double spd, double fuelCap, double fuelCons) : model(mdl), regNumber(reg), speed(spd), fuelCapacity(fuelCap), fuelConsumption(fuelCons) {}
+
+    void setModel(std::string mdl) { model = mdl; }
+    std::string getModel() { return model; }
+
+    void setRegNumber(std::string reg) { regNumber = reg; }
+    std::string getRegNumber() { return regNumber; }
+
+    void setSpeed(double spd) { speed = spd; }
+    double getSpeed() { return speed; }
+
+    void setFuelCapacity(double fuelCap) { fuelCapacity = fuelCap; }
+    double getFuelCapacity() { return fuelCapacity; }
+
+    void setFuelConsumption(double fuelCons) { fuelConsumption = fuelCons; }
+    double getFuelConsumption() { return fuelConsumption; }
+
+    double fuelNeeded(double distance) {
+        return distance * fuelConsumption;
+    }
+
+    double distanceCovered(double time) {
+        return speed * time;
+    }
+
+    void display() {
+        std::cout << "Model: " << model << std::endl;
+        std::cout << "Registration Number: " << regNumber << std::endl;
+        std::cout << "Speed: " << speed << " km/h" << std::endl;
+        std::cout << "Fuel Capacity: " << fuelCapacity << " liters" << std::endl;
+        std::cout << "Fuel Consumption: " << fuelConsumption << " km/l" << std::endl;
+    }
+};
+
+class Bus : public Vehicle {
+public:
+    Bus(std::string mdl, std::string reg, double spd, double fuelCap, double fuelCons) : Vehicle(mdl, reg, spd, fuelCap, fuelCons) {}
+};
+
+class Truck : public Vehicle {
+public:
+    Truck(std::string mdl, std::string reg, double spd, double fuelCap, double fuelCons) : Vehicle(mdl, reg, spd, fuelCap, fuelCons) {}
+};
+
+class Transport {
+public:
+    static void main() {
+        Bus myBus("Mercedes", "BUS123", 60, 200, 0.2);
+        Truck myTruck("Volvo", "TRK456", 80, 300, 0.3);
+
+        myBus.display();
+        std::cout << std::endl;
+        myTruck.display();
+    }
+};
+
+int main() {
+    Transport::main();
+    return 0;
+}
